@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic.base import TemplateView
 
-def index(request):
-    return render(request, 'index.html', context={
-        'who': 'World',
-    })
+class IndexView(TemplateView):
+
+    template_name = 'index.html'
+    def index(self, request):
+        
+        return render(request, 'index.html', context={'name': 'Articles'})
 
 def about(request):
     tags = ['обучение', 'программирование', 'python', 'oop']
